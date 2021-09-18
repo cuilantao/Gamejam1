@@ -33,6 +33,6 @@ public class PlayerInshadow : MonoBehaviour
 
     public bool get_shadow()
     {
-        return in_shadow;
+        return !in_shadow;
     }
 }

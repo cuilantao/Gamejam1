@@ -6,7 +6,7 @@ public class PlayerHPManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public Text playerHPManager;
-    private double hp_remain = 100;
+    private double hp_remain = 30;
     void Start()
     {
     }
@@ -19,7 +19,10 @@ public class PlayerHPManager : MonoBehaviour
 
     public void incrementHp()
     {
-        hp_remain += 10;
+        if (hp_remain < 100)
+        {
+            hp_remain += 10;
+        }
     }
 
     public void decreaseHp()

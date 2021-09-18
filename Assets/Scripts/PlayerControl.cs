@@ -12,12 +12,14 @@ public class PlayerControl : MonoBehaviour
     public bool is_grounded;
     Rigidbody rb;
     public PlayerInfoControl info_controller;
+    public PlayerHPManager pl_hp;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         jump = new Vector3(0, 2, 0);
         info_controller = GameObject.FindObjectOfType<PlayerInfoControl>();
+        pl_hp = GameObject.FindObjectOfType<PlayerHPManager>();
     }
 
     void OnCollisionStay(Collision coll)
@@ -31,6 +33,10 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (pl_hp.get_hp() <= 0)
+        {
+            Destroy(this.gameObject);
+        }
         if (info_controller.speed_remaining() > 0)
         {
             movement_speed = 7;
